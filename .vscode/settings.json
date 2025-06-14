@@ -1,0 +1,33 @@
+{
+    "clangd.path": "/usr/bin/clangd",
+    "clangd.arguments": [
+      "--compile-commands-dir=${workspaceFolder}/build",
+      "--query-driver=/usr/bin/arm-linux-gnueabihf-g++",
+      "--header-insertion=iwyu",
+      "--clang-tidy",
+      "--background-index"
+    ],
+    "cmake.configureSettings": {
+      "CMAKE_SYSTEM_NAME": "Linux",
+      "CMAKE_SYSTEM_PROCESSOR": "arm",
+      "CMAKE_C_COMPILER": "arm-linux-gnueabihf-gcc",
+      "CMAKE_CXX_COMPILER": "arm-linux-gnueabihf-g++",
+      "CMAKE_SYSROOT": "${env.HOME}/rv1126-rootfs",
+      "CMAKE_FIND_ROOT_PATH": "${env.HOME}/rv1126-rootfs",
+      "CMAKE_FIND_ROOT_PATH_MODE_PROGRAM": "NEVER",
+      "CMAKE_FIND_ROOT_PATH_MODE_LIBRARY": "ONLY",
+      "CMAKE_FIND_ROOT_PATH_MODE_INCLUDE": "ONLY",
+      "CMAKE_C_COMPILER_WORKS": 1,
+      "CMAKE_CXX_COMPILER_WORKS": 1
+    },
+    "cmake.environment": {
+      "PKG_CONFIG_SYSROOT_DIR": "${env.HOME}/rv1126-rootfs",
+      "PKG_CONFIG_PATH": "${env.HOME}/rv1126-rootfs/usr/lib/pkgconfig:${env.HOME}/rv1126-rootfs/usr/share/pkgconfig:${env.HOME}/rv1126-rootfs/usr/lib/arm-linux-gnueabihf/pkgconfig"
+    },
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.generator": "Ninja",
+    "cmake.buildArgs": [
+      // "-j14"
+    ],
+    "editor.fontWeight": "bold"
+  }

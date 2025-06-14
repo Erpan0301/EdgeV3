@@ -1,0 +1,24 @@
+{
+    "configurations": [
+      {
+        "name": "Linux-ARM",
+        "includePath": [
+          "${workspaceFolder}/include",
+          "${env.HOME}/rv1126-rootfs/usr/include",
+          "${env.HOME}/rv1126-rootfs/usr/include/arm-linux-gnueabihf",
+          "${env.HOME}/rv1126-rootfs/usr/include/libnm",
+          "${env.HOME}/rv1126-rootfs/usr/include/dbus-1.0",
+          "${env.HOME}/rv1126-rootfs/usr/lib/arm-linux-gnueabihf/dbus-1.0/include",
+          "${env.HOME}/rv1126-rootfs/usr/include/opencv4"
+        ],
+        "defines": [],
+        "compilerPath": "/usr/bin/arm-linux-gnueabihf-g++",
+        "cStandard": "c11",
+        "cppStandard": "c++17",
+        "intelliSenseMode": "gcc-arm",
+        "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+        "configurationProvider": "ms-vscode.cmake-tools"
+      }
+    ],
+    "version": 4
+  }
