@@ -45,6 +45,7 @@ add_compile_options(-Wno-psabi -g3 -O0)
 file(GLOB SRC_FILES 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/api/routes/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/api/routes/camera/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/api/models/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/api/middleware/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/api/database/*.cpp
@@ -58,6 +59,9 @@ add_executable(${PROJECT_NAME} ${SRC_FILES})
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBNM REQUIRED libnm)
 pkg_check_modules(DBUS REQUIRED dbus-1)
+
+# 查找并链接 nlohmann_json 库
+find_package(nlohmann_json CONFIG REQUIRED)
 
 # Boost
 set(BOOST_ROOT ${SYSROOT_PATH}/usr)
@@ -80,6 +84,7 @@ endif()
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include/api/routes
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/api/routes/camera
     ${CMAKE_CURRENT_SOURCE_DIR}/include/api/models
     ${CMAKE_CURRENT_SOURCE_DIR}/include/api/middleware
     ${CMAKE_CURRENT_SOURCE_DIR}/include/api/database
@@ -89,6 +94,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${Boost_INCLUDE_DIRS}
     ${ASIO_INCLUDE_DIR}
     ${SQLITE_INCLUDE_DIR}
+    ${nlohmann_json_INCLUDE_DIRS}
 )
 
 # 链接库
@@ -98,6 +104,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Boost::system
     -lpthread
     -lsqlite3
+    nlohmann_json::nlohmann_json
 )
 
 # 预编译头（加速）

@@ -12,6 +12,8 @@ namespace api
       private:
         static void createTables();
         static void createUsersTable();
+        static void createCamerasTable();
+        static void createModelsTable();
         // 可以添加其他表的创建方法
     };
 

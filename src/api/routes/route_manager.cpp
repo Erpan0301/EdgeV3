@@ -1,6 +1,7 @@
 #include "api/routes/route_manager.hpp"
 
 #include "api/models/response_model.hpp"
+#include "api/routes/camera_routes.hpp"
 #include "api/routes/system_routes.hpp"
 #include "api/routes/user_routes.hpp"
 
@@ -13,6 +14,9 @@ namespace api
 
         // 注册用户路由
         UserRoutes::register_routes(app);
+
+        // 注册摄像头路由
+        CameraRoutes::register_routes(app);
 
         CROW_ROUTE(app, "/api")([]() { return Response::success(crow::json::wvalue {{"message", "Hello from API!"}}); });
 

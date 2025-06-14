@@ -1,9 +1,11 @@
 #pragma once
 
+#include <map>
 #include <memory>
 #include <sqlite3.h>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 namespace api
 {
@@ -22,7 +24,7 @@ namespace api
         void initialize(const std::string& db_path);
 
         // 执行SQL查询
-        void executeQuery(const std::string& sql);
+        std::vector<std::map<std::string, std::string>> executeQuery(const std::string& sql);
 
         // 获取数据库连接
         sqlite3* getConnection() { return db_; }
